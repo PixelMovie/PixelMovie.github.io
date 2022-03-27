@@ -1,0 +1,96 @@
+.root {
+    width: 100%;
+}
+
+.loading {
+    width: 100%;
+    text-align: center;
+}
+
+.gameTitle {
+    width: 100%;
+    border-bottom: 1px solid white;
+  text-align: center;
+}
+
+.resultContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.resultContainer > div {
+    margin: 0 50px;
+    flex: 0 0 calc(50% - 50px);
+}
+
+.searchContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.searchContainer > div {
+    margin: 0 50px;
+    flex: 0 0 calc(50% - 50px);
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: flex-end;
+}
+
+.inputContainer > input {
+    width: 350px;
+    box-sizing: border-box;
+    height: 50px;
+    font-size: 20px;
+}
+
+.searchList {
+    position: absolute;
+    bottom: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.searchList > li {
+    border: 1px solid white;
+    border-bottom: none;
+    width: 350px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    max-width: 350px;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: black;
+}
+
+.buttonContainer {
+    display: flex;
+}
+
+.buttonContainer > button {
+    box-sizing: border-box;
+    height: 50px;
+    width: 130px;
+    font-size: 21px;
+    /*background-color: rgba(29, 191, 72, 1);*/
+    background-color: rgba(23, 123, 166);
+    color: white;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+.buttonContainer > button:hover {
+    cursor: pointer;
+    /*background-color: rgba(16, 227, 72, 1);*/
+    background-color: rgba(19, 152, 209, 1)
+}
