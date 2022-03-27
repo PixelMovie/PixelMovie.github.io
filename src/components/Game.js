@@ -1,7 +1,8 @@
 import React, { Component, createRef } from "react"
-import SearchTitle from "./SearchTitle";
+
 import ImagePixel from "./ImagePixel";
 import ResultTitle from "./ResultTitle";
+import EndGameModal from "./EndGameModal";
 
 import '../css/Game.css';
 
@@ -115,6 +116,7 @@ export default class Game extends Component {
                 </div>
                 <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>Confirmer</button></div>
             </div>
+            {isWon || isLost ? <EndGameModal tries={tries} winTry={winTry} /> : null}
           </>}
       </div>
   }
