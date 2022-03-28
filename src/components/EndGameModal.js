@@ -21,12 +21,12 @@ export default class EndGameModal extends Component {
         const temp = [...Array(6)].map((element, i) => {
             if (tries[i]) {
                 if (winTry - 1 === i) {
-                    return ":green_square:"// "🟩"//'\uD83D\uDFE9'
+                    return "🔵" //:green_square:" // "🟩" //'\uD83D\uDFE9'
                 } else {
-                     return ":red_square:" //"🟥"//'\uD83D\uDFE5'
+                     return "🔴" //":red_square:" //"🟥" //'\uD83D\uDFE5'
                 }
             } else {
-                 return "⬜"
+                 return "⚪" //"⬜"
             }
         })
         const resultString = "🎬" + temp.join("")
