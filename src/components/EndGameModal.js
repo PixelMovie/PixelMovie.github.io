@@ -1,4 +1,6 @@
-import React, { Component, createRef } from "react"
+import React, { Component } from "react"
+
+import IconClose from '../img/IconClose'
 
 import '../css/EndGameModal.css';
 
@@ -14,7 +16,7 @@ export default class EndGameModal extends Component {
     }
 
     render() {
-        const { tries, winTry } = this.props
+        const { tries, winTry, onClose } = this.props
 
         const temp = [...Array(6)].map((element, i) => {
             if (tries[i]) {
@@ -31,13 +33,13 @@ export default class EndGameModal extends Component {
 
         return <div className="endGameContainer">
             <div className="endGameModal">
-                <h1>Partie Terminée</h1>
+                <div className="endGameTitle"><span>Partie Terminée</span><span onClick={() => onClose()}><IconClose customStyle="closeIcon" /></span></div>
                 <p>Merci d'avoir jouer, à demain pour un nouveau film !</p>
-                <br />
                 <div className="resultString">
                     {resultString}
                 </div>
-                <button onClick={() => this.copyToClipboard(resultString)}>Partager</button>
+                <br />
+                <button className="shareButton" onClick={() => this.copyToClipboard(resultString)}>Partager</button>
             </div>
         </div>
     }

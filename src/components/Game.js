@@ -20,6 +20,7 @@ export default class Game extends Component {
     winTry: -1,
     searchResults: [],
     hideTitleSearch: true,
+    hideEndGameModal: false,
   }
 
   submitTitle = () => {
@@ -34,6 +35,10 @@ export default class Game extends Component {
         this.setState({ winTry, tries: newTries, hideTitleSearch: true })
         this.input.current.value = ""
     }
+  }
+
+  hideEndGameModal = () => {
+      this.setState({hideEndGameModal: true})
   }
 
   search = (value) => {
@@ -95,7 +100,7 @@ export default class Game extends Component {
   }
 
   render() {
-      const { movie, tries, loading, hideTitleSearch, winTry, searchResults } = this.state
+      const { movie, tries, loading, hideTitleSearch, winTry, searchResults, hideEndGameModal } = this.state
 
       const isWon = winTry !== -1
       const isLost = !isWon && tries.length > 5
@@ -116,7 +121,7 @@ export default class Game extends Component {
                 </div>
                 <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>Confirmer</button></div>
             </div>
-            {isWon || isLost ? <EndGameModal tries={tries} winTry={winTry} /> : null}
+            {isWon || isLost ? !hideEndGameModal && <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} /> : null}
           </>}
       </div>
   }
