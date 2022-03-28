@@ -49,6 +49,15 @@
     cursor: pointer;
 }
 
+.resultPoster {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
 .resultString {
     word-wrap: anywhere;
 }

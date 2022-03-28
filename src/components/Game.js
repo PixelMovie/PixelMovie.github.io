@@ -76,7 +76,7 @@ export default class Game extends Component {
                 title: data.title,
                 image: data.poster_path,
             }
-            const poster = new Image(100, 200);
+            const poster = new Image(350, 500);
             poster.addEventListener('load', () => this.setState({loading: false}));
             poster.src = consts.getFullImageUrl(data.poster_path)
             this.setState({movie: { ...movieObject, poster: poster }})
@@ -121,7 +121,8 @@ export default class Game extends Component {
                 </div>
                 <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>Confirmer</button></div>
             </div>
-            {isWon || isLost ? !hideEndGameModal && <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} /> : null}
+            {isWon || isLost ? !hideEndGameModal && 
+                <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title}/> : null}
           </>}
       </div>
   }

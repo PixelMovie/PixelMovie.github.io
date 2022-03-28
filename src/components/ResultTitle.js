@@ -13,8 +13,6 @@ export default class ResultTitle extends Component {
   render() {
       const { tries, winTry } = this.props
 
-      console.log("resultTitle", tries, winTry)
-
       return <div className="resultTitle">
         {[...Array(6)].map((_, i) => {
             return <div className="tries" key={i}>{tries[i] ? winTry - 1 === i ? <IconChecked customStyle="tryIcon" /> : <IconCross customStyle="tryIcon" /> : null}&nbsp;{tries[i] || ""}</div>

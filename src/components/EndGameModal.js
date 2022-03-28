@@ -16,7 +16,7 @@ export default class EndGameModal extends Component {
     }
 
     render() {
-        const { tries, winTry, onClose } = this.props
+        const { tries, winTry, onClose, poster, title } = this.props
 
         const temp = [...Array(6)].map((element, i) => {
             if (tries[i]) {
@@ -35,6 +35,10 @@ export default class EndGameModal extends Component {
             <div className="endGameModal">
                 <div className="endGameTitle"><span>Partie Terminée</span><span onClick={() => onClose()}><IconClose customStyle="closeIcon" /></span></div>
                 <p>Merci d'avoir jouer, à demain pour un nouveau film !</p>
+                <div className="resultPoster">
+                    <img src={poster.src} width="175" height="250" />
+                    <div>{title}</div>
+                </div>
                 <div className="resultString">
                     {resultString}
                 </div>
