@@ -29,6 +29,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 .searchContainer > div {
@@ -44,15 +45,18 @@
 }
 
 .inputContainer > input {
-    width: 350px;
+    width: 100%;
     box-sizing: border-box;
     height: 50px;
     font-size: 20px;
+    max-width: 350px;
 }
 
 .searchList {
+    width: 100%;
+    max-width: 350px;
     position: absolute;
-    bottom: 0;
+    bottom: 25px;
     list-style: none;
     padding: 0;
 }
@@ -60,7 +64,7 @@
 .searchList > li {
     border: 1px solid white;
     border-bottom: none;
-    width: 350px;
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 0 10px;
@@ -93,4 +97,26 @@
     cursor: pointer;
     /*background-color: rgba(16, 227, 72, 1);*/
     background-color: rgba(19, 152, 209, 1)
+}
+
+@media (max-width: 1100px) {
+    .resultContainer {
+        flex-direction: column-reverse;
+    }
+
+    .resultContainer > div {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .searchContainer {
+        flex-direction: column;
+    }
+
+    .inputContainer > input {
+        margin-bottom: 14px;
+        width: 100%;
+        max-width: 350px;
+    }
 }
