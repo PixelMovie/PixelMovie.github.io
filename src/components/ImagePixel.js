@@ -61,9 +61,6 @@ export default class ImagePixel extends Component {
       posterCanvas: undefined,
       init: false,
   }
-    
-  componentDidMount() {
-  }
 
   componentDidUpdate(prevProps) {
       //Math.max(1, 101 - this.props.triesNumber * 17)

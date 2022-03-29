@@ -16,7 +16,6 @@ export default class Game extends Component {
     movie: undefined,
     tries: [],
     loading: true,
-    triesLeft: 5,
     winTry: -1,
     searchResults: [],
     hideTitleSearch: true,
@@ -33,6 +32,8 @@ export default class Game extends Component {
             winTry = newTries.length
         }
         this.setState({ winTry, tries: newTries, hideTitleSearch: true })
+        localStorage.setItem("winTry", winTry)
+        localStorage.setItem("tries", newTries)
         this.input.current.value = ""
     }
   }
@@ -89,18 +90,43 @@ export default class Game extends Component {
       this.input.current.value = value
       this.setState({hideTitleSearch: true})
   }
+
+  initMount = () => {
+    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    const firstDate = consts.firstDate;
+    const today = new Date();
+    const secondDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+    const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+
+    const id = consts.ids[diffDays]
+
+    // get movie title and image
+    this.initGame(id)
+  }
     
   componentDidMount() {
-      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-      const firstDate = consts.firstDate;
-      const today = new Date();
-      const secondDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
-      const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
-
-      const id = consts.ids[diffDays]
-
-      // get movie title and image
-      this.initGame(id)
+      // get localstorage tries if had any
+      let localDate = localStorage.getItem("date")
+      if (!localDate) {
+        const today = new Date();
+        localDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+        localStorage.setItem("date", localDate)
+      } else {
+          const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+          const today = new Date();
+          const secondDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+          const diffDays = Math.round(Math.abs((new Date(localDate) - secondDate) / oneDay));
+          if (diffDays > 0) {
+              localStorage.clear();
+              localStorage.setItem("date", secondDate)
+          }
+      }
+      let localTries = localStorage.getItem("tries")
+      localTries = localTries ? localTries.split(",") : []
+      let localWin = localStorage.getItem("winTry")
+      localWin = localWin ? parseInt(localWin) : -1
+      
+      this.setState({ winTry: localWin, tries: localTries }, this.initMount)
   }
 
   render() {
