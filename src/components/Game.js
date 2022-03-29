@@ -43,7 +43,7 @@ export default class Game extends Component {
 
   search = (value) => {
       if (value) {
-        fetch(consts.getFullSeachUrl(value))
+        fetch(consts.getFullSeachUrl(value, navigator.language))
             .then(response => {
                 if (response.ok) {
                     return response.json()
@@ -63,7 +63,7 @@ export default class Game extends Component {
   }
 
   initGame = (id) => {
-    fetch(consts.getFullMovieUrl(id))
+    fetch(consts.getFullMovieUrl(id, navigator.language))
         .then(response => {
             if (response.ok) {
                 return response.json()
@@ -91,9 +91,13 @@ export default class Game extends Component {
   }
     
   componentDidMount() {
-      // id du film du jour
-      // TODO récupération de l'id aléatoire chaque jours
-      const id = 76341
+      const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+      const firstDate = consts.firstDate;
+      const today = new Date();
+      const secondDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+      const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
+
+      const id = consts.ids[diffDays]
 
       // get movie title and image
       this.initGame(id)
