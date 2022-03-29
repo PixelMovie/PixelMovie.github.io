@@ -34,7 +34,7 @@ export default class EndGameModal extends Component {
         return <div className="endGameContainer">
             <div className="endGameModal">
                 <div className="endGameTitle"><span>Partie Terminée</span><span onClick={() => onClose()}><IconClose customStyle="closeIcon" /></span></div>
-                <p>Merci d'avoir jouer, à demain pour un nouveau film !</p>
+                <p>Merci d'avoir joué, à demain pour un nouveau film !</p>
                 <div className="resultPoster">
                     <img src={poster.src} width="175" height="250" />
                     <div>{title}</div>

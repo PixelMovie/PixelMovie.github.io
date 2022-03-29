@@ -21,6 +21,7 @@
 
 .tryIcon {
     width: 25px;
+    min-width: 25px;
 }
 
 @media (max-width: 1100px) {
