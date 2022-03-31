@@ -1,8 +1,10 @@
 import React, { Component } from "react"
 
-import IconClose from "../img/IconClose";
+import IconClose from "../img/IconClose"
 
-import '../css/HelpModal.css';
+import consts from "../consts/index"
+
+import '../css/HelpModal.css'
 
 export default class HelpModal extends Component {
 
@@ -10,9 +12,9 @@ export default class HelpModal extends Component {
 
       return <div className="helpContainer">
         <div className="helpModal">
-          <div className="helpTitle"><span>Aide</span><span onClick={() => this.props.onClose()}><IconClose customStyle="closeIcon" /></span></div>
-          <p>Le principe du jeu est de trouver l'affiche du film qui est pixélisée, en un maximum de 6 essais</p>
-          <div className="helpData">Base de données fournie par <a href="https://www.themoviedb.org" target="_blank">themoviedb</a></div>
+          <div className="helpTitle"><span>{consts.texts.help.title}</span><span onClick={() => this.props.onClose()}><IconClose customStyle="closeIcon" /></span></div>
+          <p>{consts.texts.help.description}</p>
+          <div className="helpData">{consts.texts.help.database}<a href="https://www.themoviedb.org" target="_blank">themoviedb</a></div>
         </div>
       </div>
   }

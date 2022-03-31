@@ -150,7 +150,7 @@ export default class Game extends Component {
                 <span className="inviBlock"></span>
             </div>
           </h1>
-          {loading ? <div className="loading">LOADING....</div> : <>
+          {loading ? <div className="loading">{consts.texts.loading}</div> : <>
             <div className="resultContainer">
                 <ResultTitle tries={tries} winTry={winTry} />
                 <ImagePixel poster={movie.poster} triesNumber={tries.length} isWon={isWon} />
@@ -162,7 +162,7 @@ export default class Game extends Component {
                     </ul>}
                     <input disabled={isWon || isLost} onChange={(input) => this.search(input.target.value)} ref={this.input} />
                 </div>
-                <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>Confirmer</button></div>
+                <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>{consts.texts.confirmButton}</button></div>
             </div>
             {isWon || isLost ? !hideEndGameModal && 
                 <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title}/> : null}

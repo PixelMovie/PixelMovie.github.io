@@ -65,7 +65,7 @@ export default class ImagePixel extends Component {
   componentDidUpdate(prevProps) {
       //Math.max(1, 101 - this.props.triesNumber * 17)
       if (this.state.posterCanvas && !this.state.init) {
-        this.pixelateImage(this.state.posterCanvas, this.props.poster, this.pixelPercentsByTry[this.props.triesNumber])
+        this.pixelateImage(this.state.posterCanvas, this.props.poster, this.props.isWon ? 1 : this.pixelPercentsByTry[this.props.triesNumber])
         this.setState({init: true})
       }
       if (prevProps.triesNumber !== this.props.triesNumber) {

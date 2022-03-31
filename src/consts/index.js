@@ -78,4 +78,36 @@ consts.ids = [
     44214,
 ]
 
+if (navigator.language === "fr") {
+    consts.texts = {
+        loading: "Chargement....",
+        confirmButton: "Confirmer",
+        help: {
+            title: "Aide",
+            description: "Le principe du jeu est de trouver l'affiche du film qui est pixélisée, en un maximum de 6 essais.",
+            database: "Base de données fournie par ",
+        },
+        endGame: {
+            title: "Partie terminée",
+            description: "Merci d'avoir joué, à demain pour un nouveau film !",
+            share: "Partager",
+        }
+    }
+} else {
+    consts.texts = {
+        loading: "Loading....",
+        confirmButton: "Submit",
+        help: {
+            title: "Help",
+            description: "The principle of the game is to find the movie poster that is pixelated, in a maximum of 6 tries.",
+            database: "Database provided by ",
+        },
+        endGame: {
+            title: "Game Finished",
+            description: "Thanks for playing, see you tomorrow for the next movie !",
+            share: "Share",
+        }
+    }
+}
+
 export default consts
