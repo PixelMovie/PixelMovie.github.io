@@ -7,9 +7,6 @@ import IconChecked from "../img/IconChecked";
 
 export default class ResultTitle extends Component {
 
-  componentDidMount() {
-  }
-
   render() {
       const { tries, winTry } = this.props
 

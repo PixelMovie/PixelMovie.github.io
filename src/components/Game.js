@@ -3,10 +3,12 @@ import React, { Component, createRef } from "react"
 import ImagePixel from "./ImagePixel";
 import ResultTitle from "./ResultTitle";
 import EndGameModal from "./EndGameModal";
+import IconHelp from "../img/IconHelp";
 
 import '../css/Game.css';
 
 import consts from "../consts/index"
+import HelpModal from "./HelpModal";
 
 export default class Game extends Component {
 
@@ -20,6 +22,7 @@ export default class Game extends Component {
     searchResults: [],
     hideTitleSearch: true,
     hideEndGameModal: false,
+    showHelp: false,
   }
 
   submitTitle = () => {
@@ -40,6 +43,10 @@ export default class Game extends Component {
 
   hideEndGameModal = () => {
       this.setState({hideEndGameModal: true})
+  }
+
+  showHelpModal = (show) => {
+      this.setState({showHelp: show})
   }
 
   search = (value) => {
@@ -130,13 +137,19 @@ export default class Game extends Component {
   }
 
   render() {
-      const { movie, tries, loading, hideTitleSearch, winTry, searchResults, hideEndGameModal } = this.state
+      const { movie, tries, loading, hideTitleSearch, winTry, searchResults, hideEndGameModal, showHelp } = this.state
 
       const isWon = winTry !== -1
       const isLost = !isWon && tries.length > 5
 
       return <div className="root">
-          <h1 className="gameTitle">Pixel Movie</h1>
+          <h1 className="gameTitle">
+            <div className="titleContainer">
+                <IconHelp customStyle="helpIcon" onClick={() => this.showHelpModal(true)} /> 
+                <span>Pixel Movie</span>
+                <span className="inviBlock"></span>
+            </div>
+          </h1>
           {loading ? <div className="loading">LOADING....</div> : <>
             <div className="resultContainer">
                 <ResultTitle tries={tries} winTry={winTry} />
@@ -153,6 +166,7 @@ export default class Game extends Component {
             </div>
             {isWon || isLost ? !hideEndGameModal && 
                 <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title}/> : null}
+            {showHelp && <HelpModal onClose={() => this.showHelpModal(false)} />}
           </>}
       </div>
   }
