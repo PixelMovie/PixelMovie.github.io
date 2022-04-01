@@ -3,16 +3,20 @@ import React, { Component, createRef } from "react"
 import ImagePixel from "./ImagePixel";
 import ResultTitle from "./ResultTitle";
 import EndGameModal from "./EndGameModal";
+import HelpModal from "./HelpModal";
+import Toastr from "./Toastr";
+
 import IconHelp from "../img/IconHelp";
 
 import '../css/Game.css';
 
 import consts from "../consts/index"
-import HelpModal from "./HelpModal";
 
 export default class Game extends Component {
 
   input = createRef()
+
+  toastrTimeout = undefined;
 
   state = {
     movie: undefined,
@@ -23,6 +27,7 @@ export default class Game extends Component {
     hideTitleSearch: true,
     hideEndGameModal: false,
     showHelp: false,
+    showToastr: false,
   }
 
   submitTitle = () => {
@@ -47,6 +52,16 @@ export default class Game extends Component {
 
   showHelpModal = (show) => {
       this.setState({showHelp: show})
+  }
+
+  showToastr = () => {
+    const { showToastr } = this.state;
+    if (showToastr) {
+        clearTimeout(this.toastrTimeout)
+    } else {
+        this.setState({ showToastr: true })
+    }
+    this.toastrTimeout = setTimeout(() => this.setState({ showToastr: false }), 3000)
   }
 
   search = (value) => {
@@ -137,7 +152,7 @@ export default class Game extends Component {
   }
 
   render() {
-      const { movie, tries, loading, hideTitleSearch, winTry, searchResults, hideEndGameModal, showHelp } = this.state
+      const { movie, tries, loading, hideTitleSearch, winTry, searchResults, hideEndGameModal, showHelp, showToastr } = this.state
 
       const isWon = winTry !== -1
       const isLost = !isWon && tries.length > 5
@@ -165,8 +180,9 @@ export default class Game extends Component {
                 <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>{consts.texts.confirmButton}</button></div>
             </div>
             {isWon || isLost ? !hideEndGameModal && 
-                <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title}/> : null}
+                <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title} showToastr={this.showToastr}/> : null}
             {showHelp && <HelpModal onClose={() => this.showHelpModal(false)} />}
+            {showToastr && <Toastr />}
           </>}
       </div>
   }

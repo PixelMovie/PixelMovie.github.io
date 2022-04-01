@@ -10,7 +10,8 @@ export default class EndGameModal extends Component {
 
     copyToClipboard = (text) => {
         const finalText = "https://pixelmovie.github.io\n\n" + text
-        navigator.clipboard.writeText(finalText).then(function() {
+        navigator.clipboard.writeText(finalText).then(() => {
+            this.props.showToastr()
             console.log('Async: Copying to clipboard was successful!');
         }, function(err) {
             console.error('Async: Could not copy text: ', err);

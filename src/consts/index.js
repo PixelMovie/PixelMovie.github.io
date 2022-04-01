@@ -92,6 +92,9 @@ if (navigator.language === "fr" || navigator.language === "fr-FR") {
             title: "Partie terminée",
             description: "Merci d'avoir joué, à demain pour un nouveau film !",
             share: "Partager",
+        },
+        toastr: {
+            copy: "Copié dans le presse-papier !"
         }
     }
 } else {
@@ -108,6 +111,9 @@ if (navigator.language === "fr" || navigator.language === "fr-FR") {
             title: "Game Finished",
             description: "Thanks for playing, see you tomorrow for the next movie !",
             share: "Share",
+        },
+        toastr: {
+            copy: "Copied to clipboard !"
         }
     }
 }
