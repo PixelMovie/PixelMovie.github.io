@@ -146,7 +146,7 @@ export default class Game extends Component {
           <h1 className="gameTitle">
             <div className="titleContainer">
                 <IconHelp customStyle="helpIcon" onClick={() => this.showHelpModal(true)} /> 
-                <span>Pixel Movie {navigator.language}</span>
+                <span>Pixel Movie</span>
                 <span className="inviBlock"></span>
             </div>
           </h1>
