@@ -102,7 +102,7 @@ export default class Game extends Component {
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
     const firstDate = consts.firstDate;
     const today = new Date();
-    const secondDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+    const secondDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 
     const id = consts.ids[diffDays]
@@ -116,12 +116,12 @@ export default class Game extends Component {
       let localDate = localStorage.getItem("date")
       if (!localDate) {
         const today = new Date();
-        localDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+        localDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
         localStorage.setItem("date", localDate)
       } else {
           const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
           const today = new Date();
-          const secondDate = new Date(today.getFullYear(), (today.getMonth()+1), today.getDate());
+          const secondDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
           const diffDays = Math.round(Math.abs((new Date(localDate) - secondDate) / oneDay));
           if (diffDays > 0) {
               localStorage.clear();
@@ -146,7 +146,7 @@ export default class Game extends Component {
           <h1 className="gameTitle">
             <div className="titleContainer">
                 <IconHelp customStyle="helpIcon" onClick={() => this.showHelpModal(true)} /> 
-                <span>Pixel Movie</span>
+                <span>Pixel Movie {navigator.language}</span>
                 <span className="inviBlock"></span>
             </div>
           </h1>

@@ -1,5 +1,5 @@
 const consts = {
-    firstDate: new Date(2022, 3, 29),
+    firstDate: new Date(2022, 2, 29),
     apiKey: "453b207e5b4f65b9f51b1abb01505e89",
     imageUrl: "https://image.tmdb.org/t/p/w342",
     movieUrl: "https://api.themoviedb.org/3/movie",
