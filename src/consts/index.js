@@ -81,6 +81,7 @@ consts.ids = [
 if (navigator.language === "fr" || navigator.language === "fr-FR") {
     consts.texts = {
         loading: "Chargement....",
+        inputPlaceholder: "Titre du film..",
         confirmButton: "Confirmer",
         help: {
             title: "Aide",
@@ -96,6 +97,7 @@ if (navigator.language === "fr" || navigator.language === "fr-FR") {
 } else {
     consts.texts = {
         loading: "Loading....",
+        inputPlaceholder: "Movie title..",
         confirmButton: "Submit",
         help: {
             title: "Help",

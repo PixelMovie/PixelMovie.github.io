@@ -160,7 +160,7 @@ export default class Game extends Component {
                     {!hideTitleSearch && <ul className="searchList">
                         {searchResults.map((element, i) => <li key={i} onClick={() => this.changeInputValue(element)}>{element}</li> )}
                     </ul>}
-                    <input disabled={isWon || isLost} onChange={(input) => this.search(input.target.value)} ref={this.input} />
+                    <input disabled={isWon || isLost} onChange={(input) => this.search(input.target.value)} ref={this.input} placeholder={consts.texts.inputPlaceholder} />
                 </div>
                 <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>{consts.texts.confirmButton}</button></div>
             </div>
