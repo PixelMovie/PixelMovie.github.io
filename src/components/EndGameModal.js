@@ -47,6 +47,7 @@ export default class EndGameModal extends Component {
                 </div>
                 <br />
                 <button className="shareButton" onClick={() => this.copyToClipboard(resultString)}>{consts.texts.endGame.share}</button>
+                <div className="coffee">❤️ Like? <a href="https://ko-fi.com/pixelmovie" target="_blank">Buy me a coffee</a></div>
             </div>
         </div>
     }

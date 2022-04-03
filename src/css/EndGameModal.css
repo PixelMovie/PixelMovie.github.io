@@ -61,3 +61,14 @@
 .resultString {
     word-wrap: anywhere;
 }
+
+.coffee {
+    margin-top: 20px;
+    width: 100%;
+    text-align: right;
+    font-size: 12px;
+}
+
+.coffee > a {
+    color: white;
+}
