@@ -84,6 +84,7 @@
     white-space: nowrap;
     overflow: hidden;
     background-color: black;
+    padding: 5px;
 }
 
 .buttonContainer {
@@ -130,6 +131,10 @@
         display: flex;
         justify-content: center;
         margin-top: 15px;
+    }
+
+    .inputContainer {
+        width: 350px;
     }
 
     .searchContainer {
