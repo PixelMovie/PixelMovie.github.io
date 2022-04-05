@@ -9,7 +9,7 @@ import '../css/EndGameModal.css'
 export default class EndGameModal extends Component {
 
     copyToClipboard = (text) => {
-        const finalText = "https://pixelmovie.github.io\n\n" + text
+        const finalText = `#${this.props.currentId + 1} - ` + "https://pixelmovie.github.io\n\n" + text
         navigator.clipboard.writeText(finalText).then(() => {
             this.props.showToastr()
             console.log('Async: Copying to clipboard was successful!');

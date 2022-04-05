@@ -16,7 +16,8 @@ export default class Game extends Component {
 
   input = createRef()
 
-  toastrTimeout = undefined;
+  toastrTimeout = undefined
+  currentId = 0
 
   state = {
     movie: undefined,
@@ -120,6 +121,8 @@ export default class Game extends Component {
     const secondDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     const diffDays = Math.round(Math.abs((firstDate - secondDate) / oneDay));
 
+    this.currentId = diffDays
+
     const id = consts.ids[diffDays]
 
     // get movie title and image
@@ -180,7 +183,7 @@ export default class Game extends Component {
                 <div className="buttonContainer"><button disabled={isWon || isLost} onClick={this.submitTitle}>{consts.texts.confirmButton}</button></div>
             </div>
             {isWon || isLost ? !hideEndGameModal && 
-                <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title} showToastr={this.showToastr}/> : null}
+                <EndGameModal onClose={this.hideEndGameModal} tries={tries} winTry={winTry} poster={movie.poster} title={movie.title} showToastr={this.showToastr} currentId={this.currentId} /> : null}
             {showHelp && <HelpModal onClose={() => this.showHelpModal(false)} />}
             {showToastr && <Toastr />}
           </>}
