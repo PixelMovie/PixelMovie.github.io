@@ -86,6 +86,7 @@ if (navigator.language === "fr" || navigator.language === "fr-FR") {
         help: {
             title: "Aide",
             description: "Le principe du jeu est de trouver l'affiche du film qui est pixélisée, en un maximum de 6 essais.",
+            description2: "A chaque essai, l'affiche du film se dévoile un peu plus. Bonne chance !",
             database: "Base de données fournie par ",
         },
         endGame: {
@@ -105,6 +106,7 @@ if (navigator.language === "fr" || navigator.language === "fr-FR") {
         help: {
             title: "Help",
             description: "The principle of the game is to find the movie poster that is pixelated, in a maximum of 6 tries.",
+            description2: "with each test, the poster is revealed a little more. Good luck !",
             database: "Database provided by ",
         },
         endGame: {
