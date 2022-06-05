@@ -22,7 +22,7 @@ export default class EndGameModal extends Component {
         const { tries, winTry, onClose, poster, title } = this.props
 
         const temp = [...Array(6)].map((element, i) => {
-            if (tries[i]) {
+            if (tries[i] !== undefined) {
                 if (winTry - 1 === i) {
                     return "🔵" //:green_square:" // "🟩" //'\uD83D\uDFE9'
                 } else {

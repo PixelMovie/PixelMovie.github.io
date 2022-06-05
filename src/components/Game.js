@@ -32,12 +32,14 @@ export default class Game extends Component {
   }
 
   submitTitle = () => {
-    const title = this.input.current.value
-    if (title) {
+    const title = this.input.current.value || ""
+    if (title || (!title && this.state.tries.length < 5)) {
         const { movie, tries } = this.state
         const newTries = [...tries, title]
         let winTry = -1
-        if (title === movie.title) {
+        const trimedTitle = title.replaceAll(/\s/g, '').toLowerCase()
+        const trimedMovieTitle = movie.title.replaceAll(/\s/g, '').toLowerCase()
+        if (trimedTitle === trimedMovieTitle) {
             winTry = newTries.length
         }
         this.setState({ winTry, tries: newTries, hideTitleSearch: true })
@@ -106,7 +108,6 @@ export default class Game extends Component {
             this.setState({movie: { ...movieObject, poster: poster }})
         })
         .catch(error => console.log("ERROR", error))
-
   }
 
   changeInputValue = (value) => {
@@ -123,9 +124,11 @@ export default class Game extends Component {
 
     this.currentId = diffDays
 
-    const id = consts.ids[diffDays]
+    const idsLength = consts.ids.length
+    const id = consts.ids[diffDays % (idsLength - 1)]
 
     // get movie title and image
+    console.log("INIT ID", id)
     this.initGame(id)
   }
     

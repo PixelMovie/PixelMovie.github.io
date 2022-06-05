@@ -12,7 +12,7 @@ export default class ResultTitle extends Component {
 
       return <div className="resultTitle">
         {[...Array(6)].map((_, i) => {
-            return <div className="tries" key={i}>{tries[i] ? winTry - 1 === i ? <IconChecked customStyle="tryIcon" /> : <IconCross customStyle="tryIcon" /> : null}&nbsp;{tries[i] || ""}</div>
+            return <div className="tries" key={i}>{tries[i] !== undefined ? winTry - 1 === i ? <IconChecked customStyle="tryIcon" /> : <IconCross customStyle="tryIcon" /> : null}&nbsp;{tries[i] || ""}</div>
         })}
       </div>
   }
