@@ -128,7 +128,6 @@ export default class Game extends Component {
     const id = consts.ids[diffDays % (idsLength - 1)]
 
     // get movie title and image
-    console.log("INIT ID", id)
     this.initGame(id)
   }
     
